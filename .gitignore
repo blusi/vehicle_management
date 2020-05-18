@@ -1,0 +1,5 @@
+*.jar
+.idea/
+target/buildcontrol-0.0.1-SNAPSHOT.war
+target/buildcontrol-0.0.1-SNAPSHOT.war.original
+*.class

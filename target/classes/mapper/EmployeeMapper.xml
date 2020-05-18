@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinhong.buildcontrol.mapper.EmployeeMapper">
+
+    <select id="getAllEmployee" resultType="com.xinhong.buildcontrol.pojo.Employee">
+        select * from employee_info
+    </select>
+
+    <select id="getListEmployee" resultType="com.xinhong.buildcontrol.pojo.Employee">
+        select * from employee_info limit #{state},#{pageSize}
+    </select>
+
+    <insert id="insertEmployee" parameterType="com.xinhong.buildcontrol.pojo.Employee">
+        INSERT INTO employee_info (employee_name, employee_age,employee_sex, employee_birthday, employee_address, employee_id_card, employee_phone, employee_department, employee_working_years, employee_create, employee_modified, employee_operator)
+        VALUES (#{employeeName}, #{employeeAge}, #{employeeSex}, #{employeeBirthday}, #{employeeAddress}, #{employeeIdCard}, #{employeePhone}, #{employeeDepartment}, #{employeeWorkingYears}, #{employeeCreate}, #{employeeModified},#{employeeOperator});
+    </insert>
+</mapper>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinhong.buildcontrol.mapper.CarMapper">
+    <select id="getAll" resultType="com.xinhong.buildcontrol.pojo.Car">
+        select * from car_info
+    </select>
+
+    <insert id="insertCar" parameterType="com.xinhong.buildcontrol.pojo.Car">
+        INSERT INTO car_info (car_id,car_number, car_brand, car_name, car_type, car_status, car_age, car_department, car_possessor, car_engine_number, car_function, car_vin, car_registration_date, car_licence_issued, car_operator,car_create)
+            VALUES
+            (#{carId},#{carNumber},#{carBrand},#{carName},#{carType},#{carStatus},#{carAge},#{carDepartment},#{carPossessor},#{carEngineNumber},#{carFunction},#{carVin},#{carRegistrationDate},#{carLicenceIssued},#{carOperator},#{carCreate})
+    </insert>
+
+    <update id="updateById" parameterType="com.xinhong.buildcontrol.pojo.Car">
+        UPDATE car_info t
+        <trim prefix="set" suffixOverrides=",">
+            <if test="carNumber != null and carNumber != ''">
+                t.car_number=#{carNumber},
+            </if>
+            <if test="carBrand != null and carBrand != ''">
+                t.car_brand=#{carBrand},
+            </if>
+            <if test="carName != null and carName != ''">
+                t.car_name=#{carName},
+            </if>
+            <if test="carType != null and carType != ''">
+                t.car_type=#{carType},
+            </if>
+            <if test="carStatus != null and carStatus != ''">
+                t.car_status=#{carStatus},
+            </if>
+            <if test="carAge != null and carAge != ''">
+                t.car_age=#{carAge},
+            </if>
+            <if test="carDepartment != null and carDepartment != ''">
+                t.car_department=#{carDepartment},
+            </if>
+            <if test="carPossessor != null and carPossessor != ''">
+                t.car_possessor=#{carPossessor},
+            </if>
+            <if test="carEngineNumber != null and carEngineNumber != ''">
+                t.car_engine_number=#{carEngineNumber},
+            </if>
+            <if test="carFunction != null and carFunction != ''">
+                t.car_function=#{carFunction},
+            </if>
+            <if test="carVin != null and carVin != ''">
+                t.car_vin=#{carVin},
+            </if>
+            <if test="carRegistrationDate != null and carRegistrationDate != ''">
+                t.car_registration_date=#{carRegistrationDate},
+            </if>
+            <if test="carLicenceIssued != null and carLicenceIssued != ''">
+                t.car_licence_issued=#{carLicenceIssued},
+            </if>
+            <if test="carOperator != null and carOperator != ''">
+                t.car_operator=#{carOperator},
+            </if>
+            <if test="carModified != null and carModified != ''">
+                t.car_modified=#{carModified},
+            </if>
+            <if test="carCreate != null and carCreate != ''">
+                t.car_create=#{carCreate},
+            </if>
+        </trim>
+        where t.car_id = #{carId}
+    </update>
+
+    <delete id="deleteById" parameterType="com.xinhong.buildcontrol.pojo.Car">
+        delete from car_info where car_id = #{carId}
+    </delete>
+</mapper>

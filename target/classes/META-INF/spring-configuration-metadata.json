@@ -1,0 +1,103 @@
+{
+  "groups": [
+    {
+      "name": "audience",
+      "type": "com.xinhong.buildcontrol.jwt.Audience",
+      "sourceType": "com.xinhong.buildcontrol.jwt.Audience"
+    },
+    {
+      "name": "swagger",
+      "type": "com.xinhong.buildcontrol.swagger.Swagger2Config",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    }
+  ],
+  "properties": [
+    {
+      "name": "audience.base64-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.jwt.Audience"
+    },
+    {
+      "name": "audience.client-id",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.jwt.Audience"
+    },
+    {
+      "name": "audience.expires-second",
+      "type": "java.lang.Integer",
+      "sourceType": "com.xinhong.buildcontrol.jwt.Audience",
+      "defaultValue": 0
+    },
+    {
+      "name": "audience.name",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.jwt.Audience"
+    },
+    {
+      "name": "swagger.base-package",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.base-package2",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.base-package3",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.contact-email",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.contact-name",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.contact-url",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.desc",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.group-name",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.license",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.license-url",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.terms-of-service-url",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.title",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    },
+    {
+      "name": "swagger.version",
+      "type": "java.lang.String",
+      "sourceType": "com.xinhong.buildcontrol.swagger.Swagger2Config"
+    }
+  ],
+  "hints": []
+}

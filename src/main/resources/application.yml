@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: asset
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  datasource:
+    username: root
+    url: jdbc:mysql://:3306/vehicle_management?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&autoReconnect=true&failOverReadOnly=false
+#    url: jdbc:mysql://127.0.0.1:3306/vehicle_management?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&autoReconnect=true&failOverReadOnly=false
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      test-while-idle: true
+      test-on-borrow: true
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8080
+queueName: publish.queue
+topicName: publish.topic
+mybatis-plus:
+  type-aliases-package: com.xinhong.buildcontrol.pojo
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+##jwt配置
+audience:
+  # 代表这个JWT的接收对象,存入audience
+  clientId: 098f6bcd4621d373cade4e832627b4f6
+  # 密钥, 经过Base64加密, 可自行替换
+  base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
+  # JWT的签发主体，存入issuer
+  name: restapiuser
+  # 过期时间，时间戳
+  expiresSecond: 172800
+
+logging:
+  level:
+    com:
+      xinhong:
+        buildcontrol:
+          mapper: debug
+    org:
+      springframework: WARN
+      spring:
+        springboot:
+          dao: debug
+
+swagger:
+  title: 管理平台api接口
+  version: 0.0.1.SNAPSHOT
+  termsOfServiceUrl: javascript:void(0)
+  license: Apache 2.0
+  licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.html
+  basePackage: com.xinhong.buildcontrol.controller.extendsController
+  basePackage2: com.xinhong.buildcontrol.controller
+  basePackage3: com.xinhong.buildcontrol.controller.baseController
+  basePackage4: com.xinhong.buildcontrol.controller.patrolController
+  groupName: 没有分组
+  contactName: wendell
+  contactUrl: https://github.com/wendell-dev/restful-api-demo.git
+  contactEmail:

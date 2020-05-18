@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinhong.buildcontrol.mapper.DriverMapper">
+    <select id="getAllDriver" resultMap="driverMap">
+        SELECT
+            *
+        FROM
+            driver_info d
+        LEFT JOIN
+            employee_info e
+        ON
+            d.employee_id=e.employee_id
+    </select>
+    <select id="getDriverById" resultMap="driverMap" parameterType="int">
+        SELECT
+            *
+        FROM
+            driver_info d
+        LEFT JOIN
+            employee_info e
+        ON
+            d.employee_id=e.employee_id
+        WHERE
+            d.driver_id = #{driverId}
+    </select>
+
+    <resultMap id="driverMap" type="com.xinhong.buildcontrol.pojo.DriverInfo">
+        <id column="driver_id" property="driverId"/>
+        <result column="employee_id" property="employeeId"/>
+        <result column="driver_driving_license" property="driverDrivingLicense"/>
+        <result column="driver_issue_date" property="driverIssueDate"/>
+        <result column="driver_status" property="driverStatus"/>
+        <result column="driver_modified" property="driverModified"/>
+        <result column="driver_create" property="driverCreate"/>
+        <result column="driver_operator" property="driverOperator"/>
+        <collection property="employee" ofType="com.xinhong.buildcontrol.pojo.Employee">
+            <id property="employee_id" column="employeeId"/>
+            <result column="employee_name" property="employeeName" />
+            <result column="employee_age" property="employeeAge" />
+            <result column="employee_sex" property="employeeSex" />
+            <result column="employee_birthday" property="employeeBirthday" />
+            <result column="employee_address" property="employeeAddress" />
+            <result column="employee_id_card" property="employeeIdCard" />
+            <result column="employee_phone" property="employeePhone" />
+            <result column="employee_department" property="employeeDepartment" />
+            <result column="employee_working_years" property="employeeWorkingYears" />
+            <result column="employee_create" property="employeeCreate" />
+            <result column="employee_modified" property="employeeModified" />
+            <result column="employee_operator" property="employeeOperator" />
+        </collection>
+    </resultMap>
+
+</mapper>
