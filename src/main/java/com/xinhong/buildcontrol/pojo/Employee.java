@@ -1,5 +1,6 @@
 package com.xinhong.buildcontrol.pojo;
 
+import com.baomidou.mybatisplus.annotations.TableId;
 import lombok.Data;
 
 /**
@@ -8,7 +9,8 @@ import lombok.Data;
 @Data
 public class Employee {
 
-    private int employeeId;
+    @TableId
+    private String employeeId;
     private String employeeName;
     private long employeeAge;
     private String employeeSex;
@@ -21,6 +23,15 @@ public class Employee {
     private String employeeCreate;
     private String employeeModified;
     private String employeeOperator;
+    private int isDelete;
+
+    public int getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
+    }
 
     @Override
     public String toString() {
@@ -41,7 +52,7 @@ public class Employee {
                 '}';
     }
 
-    public Employee(int employeeId, String employeeName, long employeeAge, String employeeSex, String employeeBirthday, String employeeAddress, String employeeIdCard, long employeePhone, String employeeDepartment, long employeeWorkingYears, String employeeCreate, String employeeModified, String employeeOperator) {
+    public Employee(String employeeId, String employeeName, long employeeAge, String employeeSex, String employeeBirthday, String employeeAddress, String employeeIdCard, long employeePhone, String employeeDepartment, long employeeWorkingYears, String employeeCreate, String employeeModified, String employeeOperator) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.employeeAge = employeeAge;
@@ -60,11 +71,11 @@ public class Employee {
     public Employee() {
     }
 
-    public int getEmployeeId() {
+    public String getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
 

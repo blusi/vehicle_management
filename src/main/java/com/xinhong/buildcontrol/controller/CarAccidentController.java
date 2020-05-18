@@ -130,8 +130,8 @@ public class CarAccidentController {
     public Result listPage(@RequestParam(defaultValue = "1") Integer currentPage, @RequestParam(defaultValue = "10") Integer pageSize){
         try {
             PageHelper.startPage(currentPage,pageSize);
-            List<CarAccident> humanUsers = carAccidentService.selectList(null);
-            PageInfo pageInfo = new PageInfo(humanUsers);
+            List<CarAccident> carAccidents = carAccidentService.selectList(null);
+            PageInfo pageInfo = new PageInfo(carAccidents);
             return result.success("成功",new DatagridResult(pageInfo.getTotal(), pageInfo.getList()));
         } catch (Exception e) {
             e.printStackTrace();

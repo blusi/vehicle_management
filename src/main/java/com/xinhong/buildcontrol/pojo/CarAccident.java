@@ -2,7 +2,9 @@ package com.xinhong.buildcontrol.pojo;
 
 
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.enums.FieldFill;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 /**
@@ -11,7 +13,9 @@ import lombok.Data;
 @Data
 public class CarAccident {
 
+  @TableId
   private String accidentId;
+
   private String carId;
   private String accidentTime;
   private String accidentSite;

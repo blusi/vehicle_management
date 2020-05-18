@@ -1,5 +1,6 @@
 package com.xinhong.buildcontrol.pojo;
 
+import com.baomidou.mybatisplus.annotations.TableId;
 import lombok.Data;
 
 /**
@@ -7,6 +8,7 @@ import lombok.Data;
  */
 @Data
 public class Car {
+    @TableId
     private String carId;
     private String carNumber;
     private String carBrand;
@@ -24,6 +26,15 @@ public class Car {
     private String carOperator;
     private String carModified;
     private String carCreate;
+    private int isDelete;
+
+    public int getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
+    }
 
     public String getCarId() {
         return carId;

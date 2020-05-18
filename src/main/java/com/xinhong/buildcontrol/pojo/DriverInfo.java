@@ -1,6 +1,7 @@
 package com.xinhong.buildcontrol.pojo;
 
 
+import com.baomidou.mybatisplus.annotations.TableId;
 import lombok.Data;
 
 /**
@@ -9,8 +10,9 @@ import lombok.Data;
 @Data
 public class DriverInfo {
 
-  private long driverId;
-  private long employeeId;
+  @TableId
+  private String driverId;
+  private String employeeId;
   private long driverDrivingLicense;
   private String driverIssueDate;
   private String driverStatus;
@@ -18,20 +20,29 @@ public class DriverInfo {
   private String driverCreate;
   private String driverOperator;
   private Employee employee;
+  private int isDelete;
 
-  public long getDriverId() {
+  public int getIsDelete() {
+    return isDelete;
+  }
+
+  public void setIsDelete(int isDelete) {
+    this.isDelete = isDelete;
+  }
+
+  public String getDriverId() {
     return driverId;
   }
 
-  public void setDriverId(long driverId) {
+  public void setDriverId(String driverId) {
     this.driverId = driverId;
   }
 
-  public long getEmployeeId() {
+  public String getEmployeeId() {
     return employeeId;
   }
 
-  public void setEmployeeId(long employeeId) {
+  public void setEmployeeId(String employeeId) {
     this.employeeId = employeeId;
   }
 
@@ -91,7 +102,7 @@ public class DriverInfo {
     this.employee = employee;
   }
 
-  public DriverInfo(long driverId, long employeeId, long driverDrivingLicense, String driverIssueDate, String driverStatus, String driverModified, String driverCreate, String driverOperator, Employee employee) {
+  public DriverInfo(String driverId, String employeeId, long driverDrivingLicense, String driverIssueDate, String driverStatus, String driverModified, String driverCreate, String driverOperator, Employee employee) {
     this.driverId = driverId;
     this.employeeId = employeeId;
     this.driverDrivingLicense = driverDrivingLicense;

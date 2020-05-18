@@ -1,16 +1,16 @@
 package com.xinhong.buildcontrol.mapper;
 
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.xinhong.buildcontrol.pojo.Car;
 import com.xinhong.buildcontrol.pojo.Test1;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface CarMapper {
+public interface CarMapper extends BaseMapper<Car> {
 
     List<Car> getAll();//查找
 
@@ -25,7 +25,7 @@ public interface CarMapper {
 //            " (#{carNumber},#{carBrand},#{carName},#{carType},#{carStatus},#{carAge},#{carDepartment},#{carPossessor},#{carEngineNumber},#{carFunction},#{carVin},#{carRegistrationDate},#{carLicenceIssued},#{carOperator},#{carCreate})")
     int insertCar(Car car);//添加
 
-    int updateById(Car car);//修改
+    Integer updateById(Car car);//修改
 
     int deleteById(int carId);//删除
 
