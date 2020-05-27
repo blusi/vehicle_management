@@ -4,4 +4,7 @@ import com.baomidou.mybatisplus.service.IService;
 import com.xinhong.buildcontrol.pojo.CarInsurance;
 
 public interface CarInsuranceService extends IService<CarInsurance> {
+
+//    String getRemain(String time);
+
 }

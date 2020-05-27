@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xinhong.buildcontrol.pojo.CarMaintain;
+import com.xinhong.buildcontrol.pojo.CarMaintainProject;
+import com.xinhong.buildcontrol.service.CarMaintainProService;
 import com.xinhong.buildcontrol.service.CarMaintainService;
 import com.xinhong.buildcontrol.utils.DatagridResult;
 import com.xinhong.buildcontrol.utils.Result;
@@ -16,6 +18,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Api(tags = "保养管理")
@@ -26,6 +29,8 @@ public class CarMaintainController {
 
     @Autowired
     CarMaintainService carMaintainService;
+    @Autowired
+    CarMaintainProService carMaintainProService;
     Result result = new Result();
     TimeUtils time = new TimeUtils();
 
@@ -144,4 +149,47 @@ public class CarMaintainController {
         }
     }
 
+    /**
+     * 得到保养信息和保养项目
+     * @return
+     */
+    @RequestMapping("/getPro")
+    public Result getPro(){
+        return result.success("ok",carMaintainService.getPro());
+    }
+
+    @RequestMapping("/insert")
+    public Result insertMaintain(CarMaintain carMaintain){
+        if(carMaintain.getMaintainId() == null){
+            int a = 0;//保养总花费
+            String s = IdUtil.simpleUUID();
+
+            //添加项目
+            List<CarMaintainProject> carMaintainProject = new ArrayList<>();
+            //carMaintainProject.size()
+            for (int i = 0;i<=3;i++){
+                CarMaintainProject carMaintainProject1 = new CarMaintainProject();
+                String s1 = IdUtil.simpleUUID();
+                carMaintainProject1.setMaintainId(s);
+                carMaintainProject1.setProId(s1);
+                carMaintainProject1.setProName("玻璃水");
+                carMaintainProject1.setCost(200);
+                carMaintainProject1.setProCreate(time.getTime1());
+                a= (int) (a+carMaintainProject1.getCost());
+               //    carMaintainProService.insert(carMaintainProject1);
+                carMaintainProject.add(carMaintainProject1);
+            }
+            carMaintainProService.insertBatch(carMaintainProject);
+
+           //添加保养信息
+            carMaintain.setMaintainId(s);
+            carMaintain.setMaintainCreate(time.getTime1());
+            carMaintain.setMaintainOperator("初始值");
+            carMaintain.setMaintainCost(a);
+            carMaintainService.insert(carMaintain);
+
+
+        }
+        return result.success("ok");
+    }
 }

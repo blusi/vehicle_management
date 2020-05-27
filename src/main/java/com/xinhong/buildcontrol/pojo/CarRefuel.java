@@ -12,11 +12,11 @@ public class CarRefuel {
   @TableId
   private String refuelId;
   private String carId;
-  private long refuelTime;
+  private String refuelTime;
   private long refuelCost;
   private long refuelGasolineNumber;
   private long refuelPrice;
-  private long refuelQuantity;
+  private Double refuelQuantity;
   private String refuelStation;
   private long refuelPresentMileage;
   private long refuelRemainMileage;
@@ -26,10 +26,19 @@ public class CarRefuel {
   private String refuelModified;
   private String refuelOperator;
   private int isDelete;
+  private Car car;
 
-  public int getIsDelete() {
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public int getIsDelete() {
     return isDelete;
-  }
+      }
 
   public void setIsDelete(int isDelete) {
     this.isDelete = isDelete;
@@ -51,11 +60,11 @@ public class CarRefuel {
     this.carId = carId;
   }
 
-  public long getRefuelTime() {
+  public String getRefuelTime() {
     return refuelTime;
   }
 
-  public void setRefuelTime(long refuelTime) {
+  public void setRefuelTime(String refuelTime) {
     this.refuelTime = refuelTime;
   }
 
@@ -83,15 +92,15 @@ public class CarRefuel {
     this.refuelPrice = refuelPrice;
   }
 
-  public long getRefuelQuantity() {
-    return refuelQuantity;
-  }
+    public Double getRefuelQuantity() {
+        return refuelQuantity;
+    }
 
-  public void setRefuelQuantity(long refuelQuantity) {
-    this.refuelQuantity = refuelQuantity;
-  }
+    public void setRefuelQuantity(Double refuelQuantity) {
+        this.refuelQuantity = refuelQuantity;
+    }
 
-  public String getRefuelStation() {
+    public String getRefuelStation() {
     return refuelStation;
   }
 
@@ -155,7 +164,7 @@ public class CarRefuel {
     this.refuelOperator = refuelOperator;
   }
 
-  public CarRefuel(String refuelId, String carId, long refuelTime, long refuelCost, long refuelGasolineNumber, long refuelPrice, long refuelQuantity, String refuelStation, long refuelPresentMileage, long refuelRemainMileage, String refuelNotes, String refuelDocumentsInfo, String refuelCreate, String refuelModified, String refuelOperator) {
+  public CarRefuel(String refuelId, String carId, String refuelTime, long refuelCost, long refuelGasolineNumber, long refuelPrice, Double refuelQuantity, String refuelStation, long refuelPresentMileage, long refuelRemainMileage, String refuelNotes, String refuelDocumentsInfo, String refuelCreate, String refuelModified, String refuelOperator) {
     this.refuelId = refuelId;
     this.carId = carId;
     this.refuelTime = refuelTime;

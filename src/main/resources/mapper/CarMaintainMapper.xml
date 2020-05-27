@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinhong.buildcontrol.mapper.CarMaintainMapper">
+
+<resultMap id="getmap" type="com.xinhong.buildcontrol.dto.CarDTO">
+    <result column="car_id" property="carId" />
+    <result column="car_number" property="carNumber" />
+    <result column="car_department" property="carDepartment" />
+    <result column="car_brand" property="carBrand" />
+    <result column="car_name" property="carName" />
+    <collection property="carMaintain" resultMap="carMaintain" ofType="com.xinhong.buildcontrol.pojo.CarMaintain"/>
+</resultMap>
+
+<resultMap id="carMaintain"  type="com.xinhong.buildcontrol.pojo.CarMaintain" >
+    <result property="maintainId" column="maintain_id"/>
+    <result property="maintainPlace" column="maintain_place"/>
+    <result property="maintainThisTime" column="maintain_this_time"/>
+    <result property="maintainNextTime" column="maintain_next_time"/>
+    <result property="maintainThisKm" column="maintain_this_km"/>
+    <result property="maintainNextKm" column="maintain_next_km"/>
+    <result property="maintainProject" column="maintain_project"/>
+    <result property="maintainCost" column="maintain_cost"/>
+    <result property="maintainNotes" column="maintain_notes"/>
+    <collection property="carMaintainProject" resultMap="carMaintainProject" ofType="com.xinhong.buildcontrol.pojo.CarMaintainProject"/>
+</resultMap>
+
+<resultMap id="carMaintainProject" type="com.xinhong.buildcontrol.pojo.CarMaintainProject">
+    <result property="proId" column="pro_id"/>
+    <result property="proName" column="pro_name"/>
+    <result property="cost" column="pro_cost"/>
+</resultMap>
+
+
+<select id="getPro" resultMap="getmap" parameterType="String" >
+        SELECT
+        ci.*,cm.*,cp.*
+        FROM
+          car_info ci,car_maintain cm,car_maintain_project cp
+        WHERE
+        ci.car_id = cm.car_id
+        AND cm.maintain_id = cp.maintain_id
+    </select>
+</mapper>

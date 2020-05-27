@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinhong.buildcontrol.mapper.CarRefuelMapper">
+
+<resultMap id="refuelMap" type="com.xinhong.buildcontrol.pojo.CarRefuel">
+    <result column="max(cr.refuel_time)" property="refuelTime"/>
+    <result column="sum(cr.refuel_cost)" property="refuelCost"/>
+    <collection property="car" ofType="com.xinhong.buildcontrol.pojo.Car">
+        <id property="car_id" column="carId"/>
+        <result column="car_number" property="carNumber" />
+        <result column="car_department" property="carDepartment" />
+        <result column="car_brand" property="carBrand" />
+        <result column="car_name" property="carName" />
+    </collection>
+</resultMap>
+    
+    <select id="getCarRefuel" resultMap="refuelMap" >
+        SELECT ci.car_number,ci.car_department,ci.car_brand,ci.car_name,max(cr.refuel_time),sum(cr.refuel_cost)
+        FROM
+        car_info ci
+        INNER JOIN
+        car_refuel cr
+        where
+        ci.car_id=cr.car_id
+        GROUP BY
+        ci.car_id
+    </select>
+
+    <resultMap id="queryMap" type="com.xinhong.buildcontrol.pojo.CarRefuel">
+        <result column="refuel_time" property="refuelTime"/>
+        <result column="refuel_cost" property="refuelCost"/>
+        <collection property="car" ofType="com.xinhong.buildcontrol.pojo.Car">
+            <result column="car_id" property="carId" />
+            <result column="car_number" property="carNumber" />
+            <result column="car_department" property="carDepartment" />
+            <result column="car_brand" property="carBrand" />
+            <result column="car_name" property="carName" />
+        </collection>
+    </resultMap>
+    <select id="queryIt" parameterType="java.util.HashMap" resultMap="queryMap">
+        SELECT
+         *
+         FROM
+          car_info ci
+          inner JOIN
+           car_refuel cr
+           <where>
+            ci.car_id=cr.car_id
+            <if test="startTime != null and startTime != '' ">
+            and cr.refuel_time &gt;= #{startTime}
+            </if>
+            <if test="endTime != null and endTime != ''">
+                and cr.refuel_time &lt;= #{endTime}
+            </if>
+            <if test="carNumber != null and carNumber != ''">
+                and ci.car_number = #{carNumber}
+            </if>
+            <if test="carDepartment != null and carDepartment != ''">
+               and ci.car_department = #{carDepartment}
+            </if>
+          </where>
+    </select>
+</mapper>

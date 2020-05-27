@@ -4,9 +4,7 @@ import cn.hutool.core.util.IdUtil;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.xinhong.buildcontrol.pojo.CarMaintain;
 import com.xinhong.buildcontrol.pojo.CarRefuel;
-import com.xinhong.buildcontrol.service.CarMaintainService;
 import com.xinhong.buildcontrol.service.CarRefuelService;
 import com.xinhong.buildcontrol.utils.DatagridResult;
 import com.xinhong.buildcontrol.utils.Result;
@@ -18,6 +16,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
 
 @Api(tags = "加油管理")
@@ -61,6 +62,9 @@ public class CarRefuelController {
             }else {
                 String s = IdUtil.simpleUUID();
                 carRefuel.setRefuelId(s);
+                double f1 = new BigDecimal((float)carRefuel.getRefuelCost() / carRefuel.getRefuelPrice())
+                        .setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();//保留小数点后两位
+                carRefuel.setRefuelQuantity(f1);
                 carRefuel.setRefuelCreate(time.getTime1());
                 carRefuel.setRefuelOperator("初始值");
                 carRefuelService.insert(carRefuel);
@@ -145,5 +149,33 @@ public class CarRefuelController {
             e.printStackTrace();
             return result.fail(e.getMessage());
         }
+    }
+
+    /**
+     * 得到车辆加油总额，最近加油时间
+     * @return
+     */
+    @RequestMapping("/getList")
+    public List<CarRefuel> getCarRefuel(){
+        return carRefuelService.getCarRefuel();
+    }
+
+    /**
+     * 加油信息根据条件查找
+     * @param startTime
+     * @param endTime
+     * @param carNumber
+     * @param carDepartment
+     * @return
+     */
+    @RequestMapping("/queryIt")
+    public Result queryIt(String startTime,String endTime,String carNumber,String carDepartment ){
+        HashMap hashMap = new HashMap();
+        hashMap.put("startTime",startTime);
+        hashMap.put("endTime",endTime);
+        hashMap.put("carNumber",carNumber);
+        hashMap.put("carDepartment",carDepartment);
+        List<CarRefuel> carRefuels = carRefuelService.queryIt(hashMap);
+        return result.success("ok",carRefuels);
     }
 }

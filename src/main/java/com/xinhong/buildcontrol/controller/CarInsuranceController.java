@@ -53,12 +53,16 @@ public class CarInsuranceController {
     public Result save( CarInsurance carInsurance){//@RequestBoy
         try{
             if(carInsurance.getInsuranceId()!= null){
+                int i = TimeUtils.caculateTotalTime(time.getTime2(), carInsurance.getInsuranceEndTime());
+                carInsurance.setInsuranceRemainTime(i);
                 carInsurance.setInsuranceModified(time.getTime1());
                 carInsurance.setInsuranceOperator("初始值");
                 carInsuranceService.updateById(carInsurance);
             }else {
                 String s = IdUtil.simpleUUID();
                 carInsurance.setInsuranceId(s);
+                int i = TimeUtils.caculateTotalTime(time.getTime2(), carInsurance.getInsuranceEndTime());
+                carInsurance.setInsuranceRemainTime(i);
                 carInsurance.setInsuranceCreate(time.getTime1());
                 carInsurance.setInsuranceOperator("初始值");
                 carInsuranceService.insert(carInsurance);

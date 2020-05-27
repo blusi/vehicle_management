@@ -3,6 +3,8 @@ package com.xinhong.buildcontrol.pojo;
 import com.baomidou.mybatisplus.annotations.TableId;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 保养表
  */
@@ -12,7 +14,7 @@ public class CarMaintain {
   @TableId
   private String maintainId;
   private String carId;
-  private long maintainPlace;
+  private String maintainPlace;
   private String maintainThisTime;
   private long maintainThisKm;
   private String maintainNextTime;
@@ -25,6 +27,19 @@ public class CarMaintain {
   private String maintainModified;
   private String maintainCreate;
   private int isDelete;
+
+  //一个保养对应多个保养项目
+  private List<CarMaintainProject> carMaintainProject;
+
+    public List<CarMaintainProject> getCarMaintainProject() {
+    return carMaintainProject;
+  }
+
+  public void setCarMaintainProjectList(List<CarMaintainProject> carMaintainProject) {
+    this.carMaintainProject = carMaintainProject;
+  }
+
+
 
   public int getIsDelete() {
     return isDelete;
@@ -50,11 +65,11 @@ public class CarMaintain {
     this.carId = carId;
   }
 
-  public long getMaintainPlace() {
+  public String getMaintainPlace() {
     return maintainPlace;
   }
 
-  public void setMaintainPlace(long maintainPlace) {
+  public void setMaintainPlace(String maintainPlace) {
     this.maintainPlace = maintainPlace;
   }
 
@@ -146,7 +161,7 @@ public class CarMaintain {
     this.maintainCreate = maintainCreate;
   }
 
-  public CarMaintain(String maintainId, String carId, long maintainPlace, String maintainThisTime, long maintainThisKm, String maintainNextTime, long maintainNextKm, String maintainProject, long maintainCost, String maintainNotes, String maintainReceipts, String maintainOperator, String maintainModified, String maintainCreate) {
+  public CarMaintain(String maintainId, String carId, String maintainPlace, String maintainThisTime, long maintainThisKm, String maintainNextTime, long maintainNextKm, String maintainProject, long maintainCost, String maintainNotes, String maintainReceipts, String maintainOperator, String maintainModified, String maintainCreate) {
     this.maintainId = maintainId;
     this.carId = carId;
     this.maintainPlace = maintainPlace;

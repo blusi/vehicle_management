@@ -21,10 +21,29 @@ public class CarInsurance {
   private String insuranceEndTime;
   private String insuranceNotes;
   private String insuranceVoucher;
+  private int insuranceRemainTime;
   private String insuranceOperator;
   private String insuranceModified;
   private String insuranceCreate;
   private int isDelete;
+
+  private Car car;
+
+  public Car getCar() {
+    return car;
+  }
+
+  public void setCar(Car car) {
+    this.car = car;
+  }
+
+  public int getInsuranceRemainTime() {
+    return insuranceRemainTime;
+  }
+
+  public void setInsuranceRemainTime(int insuranceRemainTime) {
+    this.insuranceRemainTime = insuranceRemainTime;
+  }
 
   public int getIsDelete() {
     return isDelete;
