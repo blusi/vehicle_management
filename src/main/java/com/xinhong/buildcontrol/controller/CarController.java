@@ -4,7 +4,7 @@ import cn.hutool.core.util.IdUtil;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.xinhong.buildcontrol.pojo.Car;
+import com.xinhong.buildcontrol.pojo.CarInfo;
 import com.xinhong.buildcontrol.service.CarService;
 import com.xinhong.buildcontrol.utils.DatagridResult;
 import com.xinhong.buildcontrol.utils.Result;
@@ -53,18 +53,18 @@ public class CarController {
             @ApiImplicitParam(name = "carLicenceIssued",value = "领证日期",required = true, paramType = "query"),
     })
     @RequestMapping(value="/save",method= RequestMethod.GET)//测试所用GET
-    public Result save( Car car){//@RequestBoy
+    public Result save( CarInfo carInfo){//@RequestBoy
         try{
-            if(car.getCarId()!= null){
-                car.setCarModified(time.getTime1());
-                car.setCarOperator("初始值");
-                carService.updateById(car);
+            if(carInfo.getCarId()!= null){
+                carInfo.setCarModified(time.getTime1());
+                carInfo.setCarOperator("初始值");
+                carService.updateById(carInfo);
             }else {
                 String s = IdUtil.simpleUUID();
-                car.setCarId(s);
-                car.setCarCreate(time.getTime1());
-                car.setCarOperator("初始值");
-                carService.insert(car);
+                carInfo.setCarId(s);
+                carInfo.setCarCreate(time.getTime1());
+                carInfo.setCarOperator("初始值");
+                carService.insert(carInfo);
             }
             return result.success();
         }catch (Exception e){
@@ -80,7 +80,7 @@ public class CarController {
     @RequestMapping(value="/{id}",method= RequestMethod.DELETE)
     public Result delete(@PathVariable("id") String id){
         try {
-            Car pojo = new Car();
+            CarInfo pojo = new CarInfo();
             pojo.setCarId(id);
             pojo.setIsDelete(1);
             carService.updateById(pojo);
@@ -118,7 +118,7 @@ public class CarController {
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public Result list(){
         try {
-            EntityWrapper<Car> entityWrapper = new EntityWrapper<Car>();
+            EntityWrapper<CarInfo> entityWrapper = new EntityWrapper<CarInfo>();
             entityWrapper.and("is_delete=0");
             return result.success("成功",carService.selectList(entityWrapper));
         } catch (Exception e) {
@@ -139,8 +139,9 @@ public class CarController {
     public Result listPage(@RequestParam(defaultValue = "1") Integer currentPage, @RequestParam(defaultValue = "10") Integer pageSize){
         try {
             PageHelper.startPage(currentPage,pageSize);
-            List<Car> carApplies = carService.selectList(null);
-            PageInfo pageInfo = new PageInfo(carApplies);
+            List<CarInfo> carInfoApplies = carService.selectList(null);
+            
+            PageInfo pageInfo = new PageInfo(carInfoApplies);
             return result.success("成功",new DatagridResult(pageInfo.getTotal(), pageInfo.getList()));
         } catch (Exception e) {
             e.printStackTrace();

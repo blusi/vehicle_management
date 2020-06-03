@@ -2,6 +2,9 @@ package com.xinhong.buildcontrol.pojo;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import lombok.Data;
+import org.apache.catalina.LifecycleState;
+
+import java.util.List;
 
 /**
  * 车辆修理表
@@ -13,6 +16,7 @@ public class CarRepairing {
   private String repairingId;
   private String faultId;
   private String accidentId;
+  private String carId;
   private String repairingTime;
   private String repairingType;
   private double repairingCost;
@@ -21,6 +25,24 @@ public class CarRepairing {
   private String repairingCreate;
   private String repairingOperator;
   private int isDelete;
+
+  private List<CarRepairingProject> carRepairingProjectList;
+
+  public String getCarId() {
+    return carId;
+  }
+
+  public void setCarId(String carId) {
+    this.carId = carId;
+  }
+
+  public List<CarRepairingProject> getCarRepairingProjectList() {
+    return carRepairingProjectList;
+  }
+
+  public void setCarRepairingProjectList(List<CarRepairingProject> carRepairingProjectList) {
+    this.carRepairingProjectList = carRepairingProjectList;
+  }
 
   public int getIsDelete() {
     return isDelete;

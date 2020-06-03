@@ -1,12 +1,15 @@
 package com.xinhong.buildcontrol.pojo;
 
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.sun.org.glassfish.gmbal.NameValue;
 import lombok.Data;
 
 /**
  * 员工实体
  */
 @Data
+@TableName("employee_info")
 public class Employee {
 
     @TableId

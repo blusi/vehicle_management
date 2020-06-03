@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xinhong.buildcontrol.mapper.CarMapper">
-    <select id="getAll" resultType="com.xinhong.buildcontrol.pojo.Car">
+    <select id="getAll" resultType="com.xinhong.buildcontrol.pojo.CarInfo">
         select * from car_info
     </select>
 
-    <insert id="insertCar" parameterType="com.xinhong.buildcontrol.pojo.Car">
+    <insert id="insertCar" parameterType="com.xinhong.buildcontrol.pojo.CarInfo">
         INSERT INTO car_info (car_id,car_number, car_brand, car_name, car_type, car_status, car_age, car_department, car_possessor, car_engine_number, car_function, car_vin, car_registration_date, car_licence_issued, car_operator,car_create)
             VALUES
             (#{carId},#{carNumber},#{carBrand},#{carName},#{carType},#{carStatus},#{carAge},#{carDepartment},#{carPossessor},#{carEngineNumber},#{carFunction},#{carVin},#{carRegistrationDate},#{carLicenceIssued},#{carOperator},#{carCreate})
     </insert>
 
-    <update id="updateById" parameterType="com.xinhong.buildcontrol.pojo.Car">
+    <update id="updateById" parameterType="com.xinhong.buildcontrol.pojo.CarInfo">
         UPDATE car_info t
         <trim prefix="set" suffixOverrides=",">
             <if test="carNumber != null and carNumber != ''">
@@ -66,7 +66,7 @@
         where t.car_id = #{carId}
     </update>
 
-    <delete id="deleteById" parameterType="com.xinhong.buildcontrol.pojo.Car">
+    <delete id="deleteById" parameterType="com.xinhong.buildcontrol.pojo.CarInfo">
         delete from car_info where car_id = #{carId}
     </delete>
 </mapper>

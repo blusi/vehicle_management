@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinhong.buildcontrol.mapper.CarRepairingMapper">
+    <resultMap id="getmap" type="com.xinhong.buildcontrol.dto.CarDTO">
+        <result column="car_id" property="carId" />
+        <result column="car_number" property="carNumber" />
+        <result column="car_department" property="carDepartment" />
+        <result column="car_brand" property="carBrand" />
+        <result column="car_name" property="carName" />
+        <collection property="carRepairing" resultMap="carRepairing" ofType="com.xinhong.buildcontrol.pojo.CarRepairing"/>
+    </resultMap>
+
+    <!--维修信息映射-->
+    <resultMap id="carRepairing"  type="com.xinhong.buildcontrol.pojo.CarRepairing" >
+        <result property="maintainId" column="repairing_id"/>
+        <result property="maintainPlace" column="car_id"/>
+        <result property="repairingTime" column="repairing_time"/>
+        <result property="repairingType" column="repairing_type"/>
+        <result property="repairingCost" column="repairing_cost"/>
+        <result property="repairingNotes" column="repairing_notes"/>
+        <collection property="carRepairingProject" resultMap="carRepairingProject" ofType="com.xinhong.buildcontrol.pojo.CarRepairingProject"/>
+    </resultMap>
+
+    <!--维修项目映射-->
+    <resultMap id="carRepairingProject" type="com.xinhong.buildcontrol.pojo.CarRepairingProject">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="cost" column="cost"/>
+    </resultMap>
+
+    <select id="getPro" resultMap="getmap" parameterType="String" >
+        SELECT
+        ci.*,cm.*,cp.*
+        FROM
+          car_info ci,car_repairing cm,car_repairing_project cp
+        WHERE
+        ci.car_id = cm.car_id
+        AND cm.repairing_id = cp.rep_id
+        AND cm.is_delete=0
+    </select>
+</mapper>
+

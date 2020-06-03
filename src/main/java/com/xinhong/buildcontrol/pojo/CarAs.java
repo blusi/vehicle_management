@@ -16,7 +16,7 @@ public class CarAs {
   private String asTime;
   private String asNextTime;
   private long asCost;
-  private long asPlace;
+  private String asPlace;
   private long asNotes;
   private long asInvoices;
   private String asOperator;
@@ -72,11 +72,11 @@ public class CarAs {
     this.asCost = asCost;
   }
 
-  public long getAsPlace() {
+  public String getAsPlace() {
     return asPlace;
   }
 
-  public void setAsPlace(long asPlace) {
+  public void setAsPlace(String asPlace) {
     this.asPlace = asPlace;
   }
 
@@ -120,7 +120,7 @@ public class CarAs {
     this.asCreate = asCreate;
   }
 
-  public CarAs(String asId, String carId, String asTime, String asNextTime, long asCost, long asPlace, long asNotes, long asInvoices, String asOperator, String asModified, String asCreate) {
+  public CarAs(String asId, String carId, String asTime, String asNextTime, long asCost, String asPlace, long asNotes, long asInvoices, String asOperator, String asModified, String asCreate) {
     this.asId = asId;
     this.carId = carId;
     this.asTime = asTime;

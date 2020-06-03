@@ -1,6 +1,7 @@
 package com.xinhong.buildcontrol.pojo;
 
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import lombok.Data;
 
@@ -27,14 +28,15 @@ public class CarInsurance {
   private String insuranceCreate;
   private int isDelete;
 
-  private Car car;
+  @TableField(exist = false)
+  private CarInfo carInfo;
 
-  public Car getCar() {
-    return car;
+  public CarInfo getCarInfo() {
+    return carInfo;
   }
 
-  public void setCar(Car car) {
-    this.car = car;
+  public void setCarInfo(CarInfo carInfo) {
+    this.carInfo = carInfo;
   }
 
   public int getInsuranceRemainTime() {

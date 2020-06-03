@@ -118,6 +118,7 @@ public class CarRefuelController {
      * 查看所有信息
      * @return
      */
+    @ApiOperation("查询所有加油信息")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public Result list(){
         try {
@@ -155,7 +156,8 @@ public class CarRefuelController {
      * 得到车辆加油总额，最近加油时间
      * @return
      */
-    @RequestMapping("/getList")
+    @ApiOperation("查询加油总额，时间——可用")
+    @RequestMapping(value = "/getList",method = RequestMethod.GET)
     public List<CarRefuel> getCarRefuel(){
         return carRefuelService.getCarRefuel();
     }
@@ -168,7 +170,14 @@ public class CarRefuelController {
      * @param carDepartment
      * @return
      */
-    @RequestMapping("/queryIt")
+    @ApiOperation("加油信息根据条件查找")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "startTime" ,value = "开始时间" ,required = false, paramType = "query"),
+            @ApiImplicitParam(name = "endTime" ,value = "结束时间" ,required = false, paramType = "query"),
+            @ApiImplicitParam(name = "carNumber" ,value = "车牌号" ,required = false, paramType = "query"),
+            @ApiImplicitParam(name = "carDepartment" ,value = "部门" ,required = false, paramType = "query")
+    })
+    @RequestMapping(value = "/queryIt",method = RequestMethod.GET)
     public Result queryIt(String startTime,String endTime,String carNumber,String carDepartment ){
         HashMap hashMap = new HashMap();
         hashMap.put("startTime",startTime);

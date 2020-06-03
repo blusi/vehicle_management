@@ -36,18 +36,18 @@ public class CarInsuranceController {
      * @param
      * @return
      */
-    @ApiOperation(value = "保险新增或修改——可用",httpMethod = "POST")
+    @ApiOperation(value = "保险新增或修改——可用",httpMethod = "GET")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "insuranceId", value = "修改的时候传入", required = false,paramType = "query"),
             @ApiImplicitParam(name = "carId", value = "车辆id", required = true,paramType = "query"),
-            @ApiImplicitParam(name = "insurancePlace", value = "地点", required = true,paramType = "query"),
-            @ApiImplicitParam(name = "insuranceCommercialCost", value = "商业保险费", required = true,paramType = "query"),
-            @ApiImplicitParam(name = "insuranceStrongCost", value = "交强保险费", required = true,paramType = "query"),
-            @ApiImplicitParam(name = "insuranceElseCost", value = "其他保险费", required = true,paramType = "query"),
-            @ApiImplicitParam(name = "insuranceBeginTime", value = "保险开始日期", required = true,paramType = "query"),
-            @ApiImplicitParam(name = "insuranceEndTime", value = "保险结束日期", required = true,paramType = "query"),
-            @ApiImplicitParam(name = "insuranceNotes", value = "备注", required = true,paramType = "query"),
-            @ApiImplicitParam(name = "insuranceVoucher", value = "收据", required = true,paramType = "query")
+            @ApiImplicitParam(name = "insurancePlace", value = "地点", required = false,paramType = "query"),
+            @ApiImplicitParam(name = "insuranceCommercialCost", value = "商业保险费", required = false,paramType = "query"),
+            @ApiImplicitParam(name = "insuranceStrongCost", value = "交强保险费", required = false,paramType = "query"),
+            @ApiImplicitParam(name = "insuranceElseCost", value = "其他保险费", required = false,paramType = "query"),
+            @ApiImplicitParam(name = "insuranceBeginTime", value = "保险开始日期", required = false,paramType = "query"),
+            @ApiImplicitParam(name = "insuranceEndTime", value = "保险结束日期", required = false,paramType = "query"),
+            @ApiImplicitParam(name = "insuranceNotes", value = "备注", required = false,paramType = "query"),
+            @ApiImplicitParam(name = "insuranceVoucher", value = "收据", required = false,paramType = "query")
     })
     @RequestMapping(value="/save",method= RequestMethod.GET)//测试所用GET
     public Result save( CarInsurance carInsurance){//@RequestBoy

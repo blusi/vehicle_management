@@ -20,7 +20,7 @@ import java.util.List;
 
 @Api(tags = "事故管理")
 @RestController
-@RequestMapping("Car/CarAccident")
+@RequestMapping("CarInfo/CarAccident")
 @CrossOrigin
 public class CarAccidentController {
 

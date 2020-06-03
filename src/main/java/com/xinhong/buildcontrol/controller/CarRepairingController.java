@@ -141,4 +141,14 @@ public class CarRepairingController {
             return result.fail(e.getMessage());
         }
     }
+
+    /**
+     * 得到维修信息和维修项目
+     * @return
+     */
+    @ApiOperation(value = "查询维修信息和维修项目——可用")
+    @RequestMapping("/getPro")
+    public Result getPro(){
+        return result.success("ok",carRepairingService.getPro());
+    }
 }

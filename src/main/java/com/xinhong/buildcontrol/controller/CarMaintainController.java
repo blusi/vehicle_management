@@ -39,7 +39,7 @@ public class CarMaintainController {
      * @param
      * @return
      */
-    @ApiOperation(value = "保养新增或修改——可用",httpMethod = "POST")
+    @ApiOperation(value = "保养新增或修改——可用",httpMethod = "GET")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "maintainId", value = "修改的时候传入", required = false,paramType = "query"),
             @ApiImplicitParam(name = "carId", value = "车辆id", required = true,paramType = "query"),
@@ -153,23 +153,25 @@ public class CarMaintainController {
      * 得到保养信息和保养项目
      * @return
      */
+    @ApiOperation(value = "查询保养信息和保养项目——可用")
     @RequestMapping("/getPro")
     public Result getPro(){
         return result.success("ok",carMaintainService.getPro());
     }
 
+    @ApiOperation(value = "测试添加所用")
     @RequestMapping("/insert")
     public Result insertMaintain(CarMaintain carMaintain){
         if(carMaintain.getMaintainId() == null){
             int a = 0;//保养总花费
             String s = IdUtil.simpleUUID();
 
-            //添加项目
+            //添加项目 测试用
             List<CarMaintainProject> carMaintainProject = new ArrayList<>();
             //carMaintainProject.size()
             for (int i = 0;i<=3;i++){
                 CarMaintainProject carMaintainProject1 = new CarMaintainProject();
-                String s1 = IdUtil.simpleUUID();
+                 String s1 = IdUtil.simpleUUID();
                 carMaintainProject1.setMaintainId(s);
                 carMaintainProject1.setProId(s1);
                 carMaintainProject1.setProName("玻璃水");

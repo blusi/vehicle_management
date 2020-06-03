@@ -1,24 +1,21 @@
 package com.xinhong.buildcontrol.service;
 
 import com.baomidou.mybatisplus.service.IService;
-import com.xinhong.buildcontrol.pojo.Car;
-import com.xinhong.buildcontrol.pojo.Test1;
+import com.xinhong.buildcontrol.pojo.CarInfo;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public interface CarService extends IService<Car> {
+public interface CarService extends IService<CarInfo> {
 
-//    List<Car> getAll();
+//    List<CarInfo> getAll();
 //
-//    Car getCarById(int id);
+//    CarInfo getCarById(int id);
 //
-//    List<Car> selectPageList(Integer currentPage, Integer pageSize, String startTime, String endTime, Integer state);
+//    List<CarInfo> selectPageList(Integer currentPage, Integer pageSize, String startTime, String endTime, Integer state);
 //
-//    int insertCar(Car car);
+//    int insertCar(CarInfo car);
 //
-//    boolean updateById(Car car);
+//    boolean updateById(CarInfo car);
 //
 //    int deleteById(int carId);//删除
 //

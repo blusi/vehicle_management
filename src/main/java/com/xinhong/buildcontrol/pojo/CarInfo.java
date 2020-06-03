@@ -1,13 +1,15 @@
 package com.xinhong.buildcontrol.pojo;
 
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
 /**
  * 汽车实体
  */
 @Data
-public class Car {
+@TableName("car_info")
+public class CarInfo {
     @TableId
     private String carId;
     private String carNumber;

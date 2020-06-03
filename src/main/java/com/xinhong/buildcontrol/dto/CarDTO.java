@@ -1,13 +1,16 @@
 package com.xinhong.buildcontrol.dto;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
 import com.xinhong.buildcontrol.pojo.CarMaintain;
+import com.xinhong.buildcontrol.pojo.CarRepairing;
 import lombok.Data;
 
 import java.util.List;
 
 /**
- * 汽车保养DTO
+ * 汽车DTO
  */
 @Data
 public class CarDTO {
@@ -32,7 +35,20 @@ public class CarDTO {
     private int isDelete;
 
     //一个汽车对应多个保养
+    @TableField(exist = false)
     private List<CarMaintain> carMaintain;
+
+    //一个汽车对应多个维修
+    @TableField(exist = false)
+    private List<CarRepairing> carRepairing;
+
+    public List<CarRepairing> getCarRepairing() {
+        return carRepairing;
+    }
+
+    public void setCarRepairing(List<CarRepairing> carRepairing) {
+        this.carRepairing = carRepairing;
+    }
 
     public List<CarMaintain> getCarMaintain() {
         return carMaintain;

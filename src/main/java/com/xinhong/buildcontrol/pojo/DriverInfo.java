@@ -1,6 +1,7 @@
 package com.xinhong.buildcontrol.pojo;
 
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import lombok.Data;
 
@@ -19,6 +20,7 @@ public class DriverInfo {
   private String driverModified;
   private String driverCreate;
   private String driverOperator;
+  @TableField(exist = false)
   private Employee employee;
   private int isDelete;
 

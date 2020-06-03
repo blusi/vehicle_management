@@ -26,14 +26,14 @@ public class CarRefuel {
   private String refuelModified;
   private String refuelOperator;
   private int isDelete;
-  private Car car;
+  private CarInfo carInfo;
 
-    public Car getCar() {
-        return car;
+    public CarInfo getCarInfo() {
+        return carInfo;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarInfo(CarInfo carInfo) {
+        this.carInfo = carInfo;
     }
 
     public int getIsDelete() {

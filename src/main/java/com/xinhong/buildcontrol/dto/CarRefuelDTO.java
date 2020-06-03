@@ -1,7 +1,7 @@
 package com.xinhong.buildcontrol.dto;
 
 import com.baomidou.mybatisplus.annotations.TableId;
-import com.xinhong.buildcontrol.pojo.Car;
+import com.xinhong.buildcontrol.pojo.CarInfo;
 
 public class CarRefuelDTO {
     @TableId
@@ -16,7 +16,7 @@ public class CarRefuelDTO {
     private String faultCreate;
     private String faultOperator;
     private int isDelete;
-    private Car car;
+    private CarInfo carInfo;
 
     public String getFaultId() {
         return faultId;
@@ -106,15 +106,15 @@ public class CarRefuelDTO {
         this.isDelete = isDelete;
     }
 
-    public Car getCar() {
-        return car;
+    public CarInfo getCarInfo() {
+        return carInfo;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarInfo(CarInfo carInfo) {
+        this.carInfo = carInfo;
     }
 
-    public CarRefuelDTO(String faultId, String carId, String faultTime, String faultSite, String faultType, String faultStatus, String faultNotes, String faultModified, String faultCreate, String faultOperator, int isDelete, Car car) {
+    public CarRefuelDTO(String faultId, String carId, String faultTime, String faultSite, String faultType, String faultStatus, String faultNotes, String faultModified, String faultCreate, String faultOperator, int isDelete, CarInfo carInfo) {
         this.faultId = faultId;
         this.carId = carId;
         this.faultTime = faultTime;
@@ -126,7 +126,7 @@ public class CarRefuelDTO {
         this.faultCreate = faultCreate;
         this.faultOperator = faultOperator;
         this.isDelete = isDelete;
-        this.car = car;
+        this.carInfo = carInfo;
     }
 
     public CarRefuelDTO() {
